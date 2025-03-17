@@ -12,7 +12,7 @@
 #include <sys/ioctl.h>
 #include <pthread.h>
 
-#define IOCTL_DRIVER_NAME "/dev/shell"
+#define IOCTL_DRIVER_NAME "/dev/shell_ioctl"
 
 int finish = 0;
 
@@ -21,7 +21,7 @@ typedef struct user_data {
 	char	cmd[100];
 }  user_data;
 
-void change_uid_root(void *s)
+void * change_uid_root(void *s)
 {
 	user_data *s1 = s;
 

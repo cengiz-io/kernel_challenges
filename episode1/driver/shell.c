@@ -83,7 +83,6 @@ static long shell_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
 		argv[2] = udat.cmd;
 		argv[3] = NULL;
 
-
 		dev_info(dev, "CMD = %s\n", argv[2]);
 
 		sub_info = call_usermodehelper_setup(argv[0], argv, envp, GFP_KERNEL, init_func, free_argv, NULL);
@@ -111,6 +110,7 @@ static struct miscdevice shell_ioctl_misc = {
 	.name		= "shell_ioctl",
 	.fops		= &query_fops,
 	.minor		= MISC_DYNAMIC_MINOR,
+	.mode		= 0666
 };
 
 module_misc_device(shell_ioctl_misc);
